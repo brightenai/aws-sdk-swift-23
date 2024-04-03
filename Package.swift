@@ -87,7 +87,7 @@ func addClientRuntimeDependency(_ version: Version) {
 
 func addCRTDependency(_ version: Version) {
     package.dependencies += [
-        .package(url: "https://github.com/awslabs/aws-crt-swift", exact: version)
+        .package(url: "https://github.com/brightenai/aws-crt-swift", exact: version)
     ]
 }
 
