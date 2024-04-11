@@ -67,22 +67,22 @@ func addClientRuntimeDependency(_ version: Version) {
     let smithySwiftURL = "https://github.com/brightenai/smithy-swift"
     let useLocalDeps = ProcessInfo.processInfo.environment["AWS_SWIFT_SDK_USE_LOCAL_DEPS"] != nil
     let useMainDeps = ProcessInfo.processInfo.environment["AWS_SWIFT_SDK_USE_MAIN_DEPS"] != nil
-    switch (useLocalDeps, useMainDeps) {
-    case (true, true):
-        fatalError("Unable to determine which dependencies to use. Please only specify one of AWS_SWIFT_SDK_USE_LOCAL_DEPS or AWS_SWIFT_SDK_USE_MAIN_DEPS.")
-    case (true, false):
-        package.dependencies += [
-            .package(path: "../smithy-swift")
-        ]
-    case (false, true):
+    // switch (useLocalDeps, useMainDeps) {
+    // case (true, true):
+    //     fatalError("Unable to determine which dependencies to use. Please only specify one of AWS_SWIFT_SDK_USE_LOCAL_DEPS or AWS_SWIFT_SDK_USE_MAIN_DEPS.")
+    // case (true, false):
+    //     package.dependencies += [
+    //         .package(path: "../smithy-swift")
+    //     ]
+    // case (false, true):
         package.dependencies += [
             .package(url: smithySwiftURL, branch: "main")
         ]
-    case (false, false):
-        package.dependencies += [
-            .package(url: smithySwiftURL, exact: version)
-        ]
-    }
+    // case (false, false):
+    //     package.dependencies += [
+    //         .package(url: smithySwiftURL, exact: version)
+    //     ]
+    // }
 }
 
 func addCRTDependency(_ version: Version) {
